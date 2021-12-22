@@ -1,0 +1,128 @@
+-- // Services
+local Players = game:GetService("Players")
+
+-- // Vars
+local Player = Players.LocalPlayer
+local LocalPlayer = Players.LocalPlayer
+
+local function FreeBoombox()
+	local ScreenUI = Instance.new("ScreenGui")
+	local Background = Instance.new("Frame")
+	local MusicInput = Instance.new("TextBox")
+	local Play = Instance.new("TextButton")
+	local Stop = Instance.new("TextButton")
+
+	-- // Services
+	local Players = game:GetService("Players")
+
+	-- // Vars
+	local Player = Players.LocalPlayer
+	local LocalPlayer = Players.LocalPlayer
+
+	-- // Boombox Tool
+	local BoomboxTool = Instance.new("Tool", LocalPlayer.Backpack)
+	BoomboxTool.RequiresHandle = true
+	BoomboxTool.Name = "Boombox"
+	BoomboxTool.TextureId = "rbxassetid://319536646"
+	BoomboxTool.GripForward = Vector3.new(1, 0, 0)
+	BoomboxTool.GripPos = Vector3.new(1, -1.0, 0)
+	BoomboxTool.GripRight = Vector3.new(0, 0, 1)
+	BoomboxTool.GripUp = Vector3.new(0, 1, 0)
+
+	local Handle = Instance.new("Part", BoomboxTool)
+	Handle.CanCollide = false
+	Handle.Material = "Plastic"
+	Handle.Shape = "Block"
+	Handle.Color = Color3.new(163, 162, 165)
+	Handle.Size = Vector3.new(4, 1.2, 2)
+	Handle.Name = "BOOMBOXHANDLE"
+
+	local Mesh = Instance.new("SpecialMesh", Handle)
+	Mesh.Name = "Mesh"
+	Mesh.MeshType = "FileMesh"
+	Mesh.MeshId = "rbxassetid://319536754"
+	Mesh.TextureId = "rbxassetid://319536704"
+
+	BoomboxTool.Equipped:Connect(function()
+		BoomboxTool.Parent = LocalPlayer.Character
+		MusicInput.Visible = true
+		Stop.Visible = true
+		Play.Visible = true
+	end)
+	BoomboxTool.Unequipped:Connect(function()
+		BoomboxTool.Parent = LocalPlayer.Backpack
+		MusicInput.Visible = false
+		Stop.Visible = false
+		Play.Visible = false
+	end)
+
+	-- // Properties
+	ScreenUI.Name = "ScreenUI"
+	ScreenUI.Parent = game.CoreGui
+	ScreenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	Background.Name = "Background"
+	Background.Parent = ScreenUI
+	Background.BackgroundColor3 = Color3.fromRGB(138, 138, 138)
+	Background.BackgroundTransparency = 1.000
+	Background.Position = UDim2.new(0, 543, 0, 15)
+	Background.Size = UDim2.new(0, 327, 0, 47)
+
+	MusicInput.Name = "MusicInput"
+	MusicInput.Parent = Background
+	MusicInput.BackgroundColor3 = Color3.fromRGB(138, 138, 138)
+	MusicInput.BackgroundTransparency = 0.500
+	MusicInput.Position = UDim2.new(0.74934864, 0, -0.255319118, 15)
+	MusicInput.Visible = false
+	MusicInput.Size = UDim2.new(0, 327, 0, 47)
+	MusicInput.Font = Enum.Font.SourceSans
+	MusicInput.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+	MusicInput.PlaceholderText = "Music Input"
+	MusicInput.Text = ""
+	MusicInput.TextWrapped = true
+	MusicInput.TextColor3 = Color3.fromRGB(0, 0, 0)
+	MusicInput.TextSize = 35.000
+
+	Play.Name = "Play"
+	Play.Parent = Background
+	Play.BackgroundColor3 = Color3.fromRGB(138, 255, 106)
+	Play.Position = UDim2.new(0.984556437, 0, 1.40399992, 0)
+	Play.Visible = false
+	Play.Size = UDim2.new(0, 85, 0, 50)
+	Play.Font = Enum.Font.SourceSans
+	Play.Text = "Play"
+	Play.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Play.TextSize = 30.000
+	Play.MouseButton1Click:Connect(function()
+		if not LocalPlayer.Character.LowerTorso:FindFirstChild("BOOMBOXSOUND") then
+			-- // Music Function
+			local SoundID = Instance.new("Sound", LocalPlayer.Character.LowerTorso)
+			SoundID.Volume = 1
+			SoundID.Name = "BOOMBOXSOUND"
+			SoundID.Looped = true
+			SoundID.Playing = true
+			SoundID.SoundId = "rbxassetid://"..MusicInput.Text..""
+		else
+			return
+		end
+	end)
+
+	Stop.Name = "Stop"
+	Stop.Parent = Background
+	Stop.BackgroundColor3 = Color3.fromRGB(255, 108, 108)
+	Stop.Position = UDim2.new(1.26373088, 0, 1.40400004, 0)
+	Stop.Visible = false
+	Stop.Size = UDim2.new(0, 85, 0, 50)
+	Stop.Font = Enum.Font.SourceSans
+	Stop.Text = "Stop"
+	Stop.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Stop.TextSize = 30.000
+	Stop.MouseButton1Click:Connect(function()
+		LocalPlayer.Character.LowerTorso:FindFirstChild("BOOMBOXSOUND"):Destroy();
+	end)
+end
+FreeBoombox();
+LocalPlayer.CharacterAdded:Connect(function()
+	LocalPlayer.Character:WaitForChild("Animate")
+	FreeBoombox();
+end)
