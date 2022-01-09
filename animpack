@@ -31,16 +31,16 @@ if not game.CoreGui:FindFirstChild("Animation") then
 	-- // Vars
 	local LocalPlayer = Players.LocalPlayer
 	local Humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-
+	
 	-- Functions
-	function StopAnimations()
+	local function StopAnimations()
 		for i,v in pairs(LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks()) do
 			if (v.Animation.AnimationId:match("rbxassetid")) then
 				v:Stop();
 			end
 		end
 	end
-	function PlayAnimation(id)
+	local function PlayAnimation(id)
 		if UniversalAnimation.AnimationId == id then
 			StopAnimations();
 			UniversalAnimation.AnimationId = "1";
@@ -52,6 +52,10 @@ if not game.CoreGui:FindFirstChild("Animation") then
 			AnimationTrack:Play();
 		end
 	end
+	
+	Humanoid.Running:Connect(function()
+		StopAnimations();
+	end)
 
 	-- // Properties
 	Animation.Name = "Animation"
