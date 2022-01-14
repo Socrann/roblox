@@ -21,7 +21,7 @@ local function FreeBoombox()
 	local Plus = Instance.new("TextButton")
 	local Minus = Instance.new("TextButton")
 	local SettingsButton = Instance.new("ImageButton")
-	
+
 	-- // Services
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
@@ -29,10 +29,9 @@ local function FreeBoombox()
 	-- // Vars
 	local Player = Players.LocalPlayer
 	local LocalPlayer = Players.LocalPlayer
-	
+
 	local Toggled = false
 	local SoundPaused = false
-	local CheckingStatus = false
 
 	-- // Boombox Tool
 	local BoomboxTool = Instance.new("Tool", LocalPlayer.Backpack)
@@ -80,7 +79,7 @@ local function FreeBoombox()
 		Plus.Visible = false
 		Toggled = false
 	end)
-	
+
 	-- // Properties
 	ScreenUI.Name = "ScreenUI"
 	ScreenUI.Parent = game.CoreGui
@@ -136,11 +135,11 @@ local function FreeBoombox()
 			local Audio = LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId
 			local Asset = game:GetService("MarketplaceService"):GetProductInfo(Audio)
 			NotificationCenter.Text = "Currently Playing : "..Asset.Name.." "
-			
+
 			wait()
 			SoundID.SoundId = "rbxassetid://"..MusicInput.Text..""
 		else
-			
+
 			LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId = ""..MusicInput.Text..""
 			if SoundPaused == true then
 				SoundPaused = false
@@ -149,7 +148,7 @@ local function FreeBoombox()
 			local Audio = LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId
 			local Asset = game:GetService("MarketplaceService"):GetProductInfo(Audio)
 			NotificationCenter.Text = "Currently Playing : "..Asset.Name.." "
-			
+
 			wait()
 			LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId = "rbxassetid://"..MusicInput.Text..""
 		end
@@ -219,7 +218,7 @@ local function FreeBoombox()
 			wait(1.5)
 			NotificationCenter.Text = ""
 		else
-			
+
 			NotificationCenter.Text = "Music Volume : "..tostring(LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume)..""
 			wait(1.5)
 			NotificationCenter.Text = ""
@@ -293,7 +292,7 @@ local function FreeBoombox()
 			Stop.Visible = false
 			Plus.Visible = true
 			Minus.Visible = true
-			
+
 		elseif Toggled == true then
 			Toggled = false
 			Play.Visible = true
