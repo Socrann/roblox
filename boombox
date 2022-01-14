@@ -281,7 +281,7 @@ local function FreeBoombox()
 	SettingsButton.Parent = Background
 	SettingsButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	SettingsButton.BackgroundTransparency = 1.000
-	SettingsButton.Position = UDim2.new(0.749235451, 0, 1.53191495, 0)
+	SettingsButton.Position = UDim2.new(0.749, 0, 1.638, 0)
 	SettingsButton.Size = UDim2.new(0, 39, 0, 39)
 	SettingsButton.Image = "rbxassetid://2788872706"
 	SettingsButton.Visible = false
