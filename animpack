@@ -4,7 +4,7 @@ local Players = game:GetService("Players")
 -- // Vars
 local LocalPlayer = Players.LocalPlayer
 
-for i,v in pairs(LocalPlayer.PlayerGui.MainScreenGui:GetChildren()) do
+for i,v in pairs(game.CoreGui:GetChildren()) do
 	if v.Name == "AnimationPack" or v.Name == "AnimationsPack" or v.Name == "FreeAnimationPack" or v.Name == "FreeAnimationsPack" or v.Name == "FreeAnimations" or v.Name == "FreeAnimation" then
 		v:Destroy();
 	end
@@ -54,7 +54,11 @@ if not game.CoreGui:FindFirstChild("Animation") then
 	end
 	
 	Humanoid.Running:Connect(function()
-		StopAnimations();
+		for i,v in pairs(LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks()) do
+			if v.Animation.AnimationId:match("rbxassetid://3152375249") or v.Animation.AnimationId:match("rbxassetid://3152378852") or v.Animation.AnimationId:match("rbxassetid://3189773368") or v.Animation.AnimationId:match("rbxassetid://3189776546") or v.Animation.AnimationId:match("rbxassetid://3189777795") or v.Animation.AnimationId:match("rbxassetid://3189779152")  or v.Animation.AnimationId:match("rbxassetid://3487719500") then
+				v:Stop();
+			end
+		end
 	end)
 
 	-- // Properties
