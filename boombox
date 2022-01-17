@@ -79,7 +79,15 @@ local function FreeBoombox()
 		Plus.Visible = false
 		Toggled = false
 	end)
-
+	
+	RunService.Stepped:Connect(function()
+		if LocalPlayer.Character.LowerTorso:FindFirstChild("BOOMBOXSOUND") and MusicInput.Text == "" then
+			wait()
+			LocalPlayer.Character.LowerTorso:FindFirstChild("BOOMBOXSOUND"):Destroy();
+			NotificationCenter.Text = ""
+		end
+	end)
+	
 	-- // Properties
 	ScreenUI.Name = "ScreenUI"
 	ScreenUI.Parent = game.CoreGui
@@ -264,10 +272,9 @@ local function FreeBoombox()
 		end
 		if LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume <= 0.15 then
 			NotificationCenter.Text = "Music Volume : Minimun"
-			wait(1.5)
+			wait(1)
 			NotificationCenter.Text = ""
 		else
-
 			NotificationCenter.Text = "Music Volume : "..tostring(LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume)..""
 			wait(1.5)
 			NotificationCenter.Text = ""
