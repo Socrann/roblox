@@ -53,6 +53,15 @@ if not game.CoreGui:FindFirstChild("Animation") then
 		end
 	end
 	
+	LocalPlayer.CharacterAdded:Connect(function()
+	    Humanoid.Running:Connect(function()
+		    for i,v in pairs(LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks()) do
+			    if v.Animation.AnimationId:match("rbxassetid://3152375249") or v.Animation.AnimationId:match("rbxassetid://3152378852") or v.Animation.AnimationId:match("rbxassetid://3189773368") or v.Animation.AnimationId:match("rbxassetid://3189776546") or v.Animation.AnimationId:match("rbxassetid://3189777795") or v.Animation.AnimationId:match("rbxassetid://3189779152")  or v.Animation.AnimationId:match("rbxassetid://3487719500") then
+			    		v:Stop();
+			        end
+		        end
+	        end)
+        end)
 	Humanoid.Running:Connect(function()
 		for i,v in pairs(LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks()) do
 			if v.Animation.AnimationId:match("rbxassetid://3152375249") or v.Animation.AnimationId:match("rbxassetid://3152378852") or v.Animation.AnimationId:match("rbxassetid://3189773368") or v.Animation.AnimationId:match("rbxassetid://3189776546") or v.Animation.AnimationId:match("rbxassetid://3189777795") or v.Animation.AnimationId:match("rbxassetid://3189779152")  or v.Animation.AnimationId:match("rbxassetid://3487719500") then
