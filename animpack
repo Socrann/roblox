@@ -3,12 +3,19 @@ local Players = game:GetService("Players")
 
 -- // Vars
 local LocalPlayer = Players.LocalPlayer
+local MainScreenGui = LocalPlayer.PlayerGui.MainScreenGui
 
-for i,v in pairs(game.CoreGui:GetChildren()) do
+for _, v in pairs(MainScreenGui:GetChildren()) do
+	if v.Name == "AnimationPack" then
+		v:Destroy();
+	end
+end
+for i, v in pairs(game.CoreGui:GetChildren()) do
 	if v.Name == "AnimationPack" or v.Name == "AnimationsPack" or v.Name == "FreeAnimationPack" or v.Name == "FreeAnimationsPack" or v.Name == "FreeAnimations" or v.Name == "FreeAnimation" then
 		v:Destroy();
 	end
 end
+
 if not game.CoreGui:FindFirstChild("Animation") then
 	local Animation = Instance.new("ScreenGui")
 	local CLOSE = Instance.new("TextButton")
@@ -52,7 +59,7 @@ if not game.CoreGui:FindFirstChild("Animation") then
 			AnimationTrack:Play();
 		end
 	end
-
+	
 	Humanoid.Running:Connect(function()
 		for i,v in pairs(LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetPlayingAnimationTracks()) do
 			if v.Animation.AnimationId:match("rbxassetid://3152375249") or v.Animation.AnimationId:match("rbxassetid://3152378852") or v.Animation.AnimationId:match("rbxassetid://3189773368") or v.Animation.AnimationId:match("rbxassetid://3189776546") or v.Animation.AnimationId:match("rbxassetid://3189777795") or v.Animation.AnimationId:match("rbxassetid://3189779152")  or v.Animation.AnimationId:match("rbxassetid://3487719500") then
@@ -230,3 +237,11 @@ if not game.CoreGui:FindFirstChild("Animation") then
 		StopAnimations();
 	end);
 end
+LocalPlayer.CharacterAdded:Connect(function()
+	wait(3)
+	for _, v in pairs(MainScreenGui:GetChildren()) do
+		if v.Name == "AnimationPack" then
+			v:Destroy();
+		end
+	end
+end)
