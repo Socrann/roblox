@@ -29,8 +29,10 @@ local function FreeBoombox()
 	-- // Vars
 	local Player = Players.LocalPlayer
 	local LocalPlayer = Players.LocalPlayer
-
+	
+	
 	local Toggled = false
+	local Toggled2 = false
 	local SoundPaused = false
 
 	-- // Boombox Tool
@@ -79,7 +81,7 @@ local function FreeBoombox()
 		Plus.Visible = false
 		Toggled = false
 	end)
-	
+
 	RunService.Stepped:Connect(function()
 		if LocalPlayer.Character.LowerTorso:FindFirstChild("BOOMBOXSOUND") and MusicInput.Text == "" then
 			wait()
@@ -88,6 +90,16 @@ local function FreeBoombox()
 		end
 	end)
 	
+	local function Notify(Text)
+		if Toggled2 == false then
+			Toggled2 = true
+			NotificationCenter.Text = Text
+			wait(1.5)
+			NotificationCenter.Text = ""
+			Toggled2 = false
+		end
+	end
+
 	-- // Properties
 	ScreenUI.Name = "ScreenUI"
 	ScreenUI.Parent = game.CoreGui
@@ -143,7 +155,7 @@ local function FreeBoombox()
 
 			local Audio = LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId
 			local Asset = game:GetService("MarketplaceService"):GetProductInfo(Audio)
-			NotificationCenter.Text = "Currently Playing : "..Asset.Name.." "
+			NotificationCenter.Text = "Currently Playing : "..Asset.Name..""
 
 			wait()
 			SoundID.SoundId = "rbxassetid://"..MusicInput.Text..""
@@ -174,15 +186,13 @@ local function FreeBoombox()
 	Stop.TextSize = 30.000
 	Stop.MouseButton1Click:Connect(function()
 		if MusicInput.Text == "" or MusicInput.Text == " " or MusicInput.Text == "Invalid Audio!" then
-			NotificationCenter.Text = "Couldn't find an audio to stop"
-			wait(1.5)
-			NotificationCenter.Text = ""
+			Notify("Couldn't find an audio to stop")
 		end
 		if LocalPlayer.Character.LowerTorso:FindFirstChild("BOOMBOXSOUND") then
 			LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId = ""..MusicInput.Text..""
 			local Audio = LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId
 			local Asset = game:GetService("MarketplaceService"):GetProductInfo(Audio)
-			NotificationCenter.Text = "Currently Stopped : "..Asset.Name.." "
+			NotificationCenter.Text = "Currently Stopped : "..Asset.Name..""
 
 			wait()
 			LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.SoundId = "rbxassetid://"..MusicInput.Text..""
@@ -226,18 +236,12 @@ local function FreeBoombox()
 	Plus.TextSize = 18.000
 	Plus.MouseButton1Click:Connect(function()
 		if MusicInput.Text == "" or MusicInput.Text == " " then
-			NotificationCenter.Text = "Couldn't find an audio to higher volume on"
-			wait(1)
-			NotificationCenter.Text = ""
+			Notify("Couldn't find an audio to higher volume on")
 		end
 		if LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume >= 0.85 then
-			NotificationCenter.Text = "Music Volume : Max"
-			wait(1)
-			NotificationCenter.Text = ""
+			Notify("Music Volume : Max")
 		else
-			NotificationCenter.Text = "Music Volume : "..tostring(LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume)..""
-			wait(1)
-			NotificationCenter.Text = ""
+			Notify("Music Volume : "..tostring(LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume).."")
 		end
 	end)
 	Plus.MouseButton1Click:Connect(function()
@@ -266,18 +270,12 @@ local function FreeBoombox()
 	Minus.TextWrapped = true
 	Minus.MouseButton1Click:Connect(function()
 		if MusicInput.Text == "" or MusicInput.Text == " " then
-			NotificationCenter.Text = "Couldn't find an audio to lower volume on"
-			wait(1.5)
-			NotificationCenter.Text = ""
+			Notify("Couldn't find an audio to lower volume on")
 		end
 		if LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume <= 0.15 then
-			NotificationCenter.Text = "Music Volume : Minimun"
-			wait(1)
-			NotificationCenter.Text = ""
+			Notify("Music Volume : Minimun")
 		else
-			NotificationCenter.Text = "Music Volume : "..tostring(LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume)..""
-			wait(1.5)
-			NotificationCenter.Text = ""
+			Notify("Music Volume : "..tostring(LocalPlayer.Character.LowerTorso.BOOMBOXSOUND.Volume).."")
 		end
 	end)
 	Minus.MouseButton1Click:Connect(function()
