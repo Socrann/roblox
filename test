@@ -1,0 +1,20 @@
+local Exclusive = {
+	3046337431, -- // fflimsyy
+	2347633875, -- // SchooISchoot
+	1900299547, -- // sellingcuvies
+	496340709, -- // Baconplayz_RB
+	1901818748 -- // Jxvht
+}
+function Emojis()
+    for _, v in pairs(game:GetService('Players'):GetChildren()) do
+        if table.find(Exclusive, Player.UserId) then
+            if Player.Character then
+                if Player.Character.Parent.Name == 'Players' then
+                    Player.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[👻]' .. Player.DisplayName)
+                end
+            end
+        end
+    end
+end
+local Sucess, err = pcall(Emojis)
+return Exclusive
