@@ -5,14 +5,4 @@ local Exclusive = {
 	496340709, -- // Baconplayz_RB
 	1901818748 -- // Jxvht
 }
-function Emojis()
-	for _, v in pairs(game:GetService('Players'):GetChildren()) do
-		if table.find(Exclusive, v.UserId) then
-			if v.Character then
-				v.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[👻] '..v.DisplayName)
-			end
-		end
-	end
-end
-local Sucess, err = pcall(Emojis)
 return Exclusive
