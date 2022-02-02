@@ -6,15 +6,13 @@ local Exclusive = {
 	1901818748 -- // Jxvht
 }
 function Emojis()
-    for _, v in pairs(game:GetService('Players'):GetChildren()) do
-        if table.find(Exclusive, Player.UserId) then
-            if Player.Character then
-                if Player.Character.Parent.Name == 'Players' then
-                    Player.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[👻]' .. Player.DisplayName)
-                end
-            end
-        end
-    end
+	for _, v in pairs(game:GetService('Players'):GetChildren()) do
+		if table.find(Exclusive, v.UserId) then
+			if v.Character then
+				v.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[👻]' .. v.DisplayName)
+			end
+		end
+	end
 end
 local Sucess, err = pcall(Emojis)
 return Exclusive
