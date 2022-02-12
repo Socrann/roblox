@@ -1,5 +1,5 @@
 game:GetService("RunService").Stepped:Connect(function()
-	if getgenv().AimbotLoaded == true then
+	if getgenv().AimbotLoaded then
 		return
 	end
 end)
