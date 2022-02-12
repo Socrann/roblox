@@ -1,6 +1,8 @@
-if getgenv().AimbotLoaded == true then
-	return
-end
+game:GetService("RunService").Stepped:Connect(function()
+	if getgenv().AimbotLoaded == true then
+		return
+	end
+end)
 local pi    = math.pi
 local abs   = math.abs
 local clamp = math.clamp
