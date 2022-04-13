@@ -1,8 +1,9 @@
 local Whitelist = {
-	3046337431, -- // fflimsyy
-	2347633875, -- // SchooISchoot
-	1900299547, -- // sellingcuvies
-	496340709, -- // Baconplayz_RB
-	1901818748 -- // Jxvht
+	3046337431,
+	2347633875,
+	1900299547,
+	496340709, 
+	1901818748,
+	271966467
 }
 return Whitelist
