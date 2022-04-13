@@ -1,8 +1,8 @@
-local Exclusive = {
+local Whitelist = {
 	3046337431, -- // fflimsyy
 	2347633875, -- // SchooISchoot
 	1900299547, -- // sellingcuvies
 	496340709, -- // Baconplayz_RB
 	1901818748 -- // Jxvht
 }
-return Exclusive
+return Whitelist
