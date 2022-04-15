@@ -38,7 +38,7 @@ local function FreeBoombox()
 	local BoomboxTool = Instance.new("Tool", LocalPlayer.Backpack)
 	BoomboxTool.RequiresHandle = true
 	BoomboxTool.Name = "Boombox"
-	BoomboxTool.TextureId = "rbxassetid://319536646"
+	BoomboxTool.TextureId = "rbxassetid://9105688375"
 	BoomboxTool.GripForward = Vector3.new(1, 0, 0)
 	BoomboxTool.GripPos = Vector3.new(1, -1.0, 0)
 	BoomboxTool.GripRight = Vector3.new(0, 0, 1)
