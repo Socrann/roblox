@@ -57,6 +57,7 @@ local function FreeBoombox()
 	Mesh.MeshType = "FileMesh"
 	Mesh.MeshId = "rbxassetid://319536754"
 	Mesh.TextureId = "rbxassetid://319536704"
+	Mesh.VertexColor = Vector3.new(0.3, 0.5, 1)
 
 	BoomboxTool.Equipped:Connect(function()
 		BoomboxTool.Parent = LocalPlayer.Character
