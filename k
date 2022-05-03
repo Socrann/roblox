@@ -130,7 +130,7 @@ function library:CreateWatermark(name, position)
     watermark.label.TextColor3 = Color3.fromRGB(255, 255, 255)
     watermark.label.TextSize = 15
     watermark.label.TextStrokeTransparency = 0.000
-    watermark.label.TextXAlignment = Enum.TextXAlignment.Left
+    watermark.label.TextXAlignment = Enum.TextXAlignment.Center
     watermark.label.Size = UDim2.new(0, watermark.label.TextBounds.X+10, 0, 25)
     
     watermark.topbar = Instance.new("Frame", watermark.mainbar)
@@ -185,22 +185,6 @@ function library:CreateWatermark(name, position)
                 oldfps = fps
             end
         end
-    end)
-
-    watermark.mainbar.MouseEnter:Connect(function()
-        tweenservice:Create(watermark.mainbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
-        tweenservice:Create(watermark.topbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
-        tweenservice:Create(watermark.label, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { TextTransparency = 1, Active = false }):Play()
-        tweenservice:Create(watermark.Outline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
-        tweenservice:Create(watermark.BlackOutline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
-    end)
-    
-    watermark.mainbar.MouseLeave:Connect(function()
-        tweenservice:Create(watermark.mainbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
-        tweenservice:Create(watermark.topbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
-        tweenservice:Create(watermark.label, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { TextTransparency = 0, Active = true }):Play()
-        tweenservice:Create(watermark.Outline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
-        tweenservice:Create(watermark.BlackOutline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
     end)
 
     function watermark:UpdateTheme(theme)
