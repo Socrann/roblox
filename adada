@@ -213,3 +213,4 @@ function library:CreateWatermark(name, position)
 
 	return watermark
 end
+return library
