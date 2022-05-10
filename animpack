@@ -3,6 +3,7 @@ local Players = game:GetService("Players")
 
 -- // Vars
 local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse();
 local MainScreenGui = LocalPlayer.PlayerGui.MainScreenGui
 
 for _, v in pairs(MainScreenGui:GetChildren()) do
@@ -236,6 +237,12 @@ if not game.CoreGui:FindFirstChild("Animation") then
 	Stop.MouseButton1Click:Connect(function()
 		StopAnimations();
 	end);
+	
+	Mouse.KeyDown:Connect(function(key)
+	    if key == "c" then
+	        StopAnimations();
+	    end
+	end)
 end
 LocalPlayer.CharacterAdded:Connect(function()
 	wait(3)
