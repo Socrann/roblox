@@ -73,7 +73,6 @@ local function CreateToolAndGui()
 	local Frame_3 = Instance.new("Frame")
 	local Frame_4 = Instance.new("Frame")
 	local Frame_5 = Instance.new("Frame")
-	local BoomboxTool = LocalPlayer.Character:FindFirstChild("Boombox") or LocalPlayer.Backpack:FindFirstChild("Boombox")
 
 	if syn then
 		syn.protect_gui(Boombox)
