@@ -14,6 +14,7 @@ repeat wait() until game:IsLoaded();
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local UserInputService = game:GetService("UserInputService")
+local MarketplaceService = game:GetService("MarketplaceService")
 local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
@@ -27,7 +28,7 @@ local UniversalAnimation = Instance.new("Animation");
 
 repeat wait() until LocalPlayer.Character:FindFirstChild("FULLY_LOADED_CHAR")
 
-if MainScreenGui:FindFirstChild("AnimationPack").Visible == true and MainScreenGui:FindFirstChild("AnimationPack").Active == true then
+if MarketplaceService:UserOwnsGamePassAsync(LocalPlayer.UserId, 6412475) then
 	return
 end
 local function AnimationPack()
